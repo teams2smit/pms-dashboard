@@ -65,11 +65,12 @@
         <h5 class="h5 mb-2 fw-normal">Please sign in</h5>
 
         <div class="form-floating">
-            <input type="text" class="form-control" id="username" placeholder="Username">
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
             <label for="username">Username</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="password" placeholder="password">
+
+            <input type="password" class="form-control" id="password" name="password" placeholder="password" required>
             <label for="password">Password</label>
         </div>
 

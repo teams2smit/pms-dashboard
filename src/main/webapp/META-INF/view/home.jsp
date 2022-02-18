@@ -12,7 +12,7 @@
 <jsp:include page="navbar.jsp" />
 <div class="container">
 
-
+<h1 class="mt-3">Welcome to Pharamcy supply Management system</h1>
 
 </div>
 <jsp:include page="footer.jsp" />
