@@ -22,23 +22,39 @@
             <th>Ailment</th>
             <th>Composition</th>
             <th>Stock Count</th>
+            <th>Expiry Date</th>
         </tr>
 
-        <%
-            for(int i=0; i<25; i++)
-            {
-        %>
-        <div class="mb-3">
-            <tr>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-            </tr>
-        </div></p>
-        <%}
-        %>
+        <c:forEach items="${stockList}" var="medicine">
+            <div class="mb-3">
+                <tr>
+                    <td>${medicine.id}</td>
+                    <td>${medicine.medicineName}</td>
+                    <td>${medicine.targetAilments}</td>
+                    <td>${medicine.chemicalComposition}</td>
+                    <td>${medicine.numbersOfTabletsInStock}</td>
+                    <td>${medicine.dateOfExpiry}</td>
+                </tr>
+            </div>
+        </c:forEach>
+
+
+<%--        <%--%>
+<%--            for(int i=0; i<25; i++)--%>
+<%--            {--%>
+<%--        %>--%>
+<%--        <div class="mb-3">--%>
+<%--            <tr>--%>
+<%--                <td>test</td>--%>
+<%--                <td>test</td>--%>
+<%--                <td>test</td>--%>
+<%--                <td>test</td>--%>
+<%--                <td>test</td>--%>
+<%--            </tr>--%>
+<%--        </div>--%>
+<%--        <%--%>
+<%--            }--%>
+<%--        %>--%>
 
     </table>
 </div>

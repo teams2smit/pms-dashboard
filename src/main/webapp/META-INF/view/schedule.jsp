@@ -10,9 +10,9 @@
 </head>
 <body>
 <jsp:include page="navbar.jsp" />
-<div class="container">
+<div class="container mt-3">
 
-    <h1  style="text-decoration: solid;font-weight: bold;">Representative Schedule</h1>
+    <h1 style="text-decoration: solid;font-weight: bold;">Representative Schedule</h1>
     <br>
 
     <table class="table table-sm">
@@ -26,25 +26,19 @@
             <th>Doctor Contact #</th>
         </tr>
 
-        <%
-            for(int i=0; i<13; i++)
-            {
-        %>
-        <div class="mb-3">
-            <tr>
-                <td>test</td>
-                <td>tests</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-            </tr>
-        </div></p>
-        <%}
-        %>
-
-
+        <c:forEach items="${scheduleList}" var="s">
+            <div class="mb-3">
+                <tr>
+                    <td>${s.representativeName}</td>
+                    <td>${s.doctorName}</td>
+                    <td>${s.treatingAilment}</td>
+                    <td>${s.medicines}</td>
+                    <td>${s.slot}</td>
+                    <td>${s.date}</td>
+                    <td>${s.contactNumber}</td>
+                </tr>
+            </div>
+        </c:forEach>
     </table>
 
 </div>

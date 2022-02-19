@@ -1,18 +1,33 @@
 package com.smitppatel35.dashboard.controller;
 
 import com.smitppatel35.dashboard.dto.LoginDto;
+import com.smitppatel35.dashboard.dto.MedicineDemand;
+import com.smitppatel35.dashboard.dto.MedicineDemandContainer;
+import com.smitppatel35.dashboard.service.ScheduleService;
+import com.smitppatel35.dashboard.service.StockService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.awt.*;
+import java.util.List;
 
 @Controller
 public class WebController {
 
+    @Autowired
+    private StockService stockService;
+
+    @Autowired
+    private ScheduleService scheduleService;
+
     @GetMapping
-    public String home(HttpSession session, Model model){
-        if (session.getAttribute("token") == null){
+    public String home(HttpSession session, Model model) {
+        if (session.getAttribute("token") == null) {
             return "login";
         }
 
@@ -22,40 +37,54 @@ public class WebController {
     }
 
     @GetMapping("/stock")
-    public String stock(HttpSession session, Model model){
-        if (session.getAttribute("token") == null){
+    public String stock(HttpSession session, Model model) {
+        if (session.getAttribute("token") == null) {
             return "login";
         }
 
+        model.addAttribute("stockList", stockService.getAllMedicinesList());
         return "stock";
     }
 
     @GetMapping("/schedule")
-    public String schedule(HttpSession session, Model model){
-        if (session.getAttribute("token") == null){
+    public String schedule(HttpSession session, Model model) {
+        if (session.getAttribute("token") == null) {
             return "login";
         }
+
+        model.addAttribute("scheduleList", scheduleService.getSchedule(session));
 
         return "schedule";
     }
 
     @GetMapping("/supply")
-    public String supply(HttpSession session, Model model){
-        if (session.getAttribute("token") == null){
+    public String supply(HttpSession session, Model model) {
+        if (session.getAttribute("token") == null) {
             return "login";
         }
 
+        model.addAttribute("stockList", stockService.getAllMedicinesList());
         return "supply";
     }
 
+    @GetMapping(value = "/demand")
+    public String requestMedicines(@RequestParam("medicine_name") String[] demandList, Model model) {
+
+        for (String s: demandList)
+            System.out.println(s);
+
+
+        return "NO";
+    }
+
     @GetMapping("login")
-    public String login(Model model){
+    public String login(Model model) {
         model.addAttribute("login", new LoginDto());
         return "login";
     }
 
     @GetMapping("/logout")
-    public String logout(HttpSession session, Model model){
+    public String logout(HttpSession session, Model model) {
         session.removeAttribute("token");
         session.removeAttribute("username");
 
