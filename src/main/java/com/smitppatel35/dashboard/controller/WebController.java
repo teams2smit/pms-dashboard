@@ -67,14 +67,19 @@ public class WebController {
         return "supply";
     }
 
-    @GetMapping(value = "/demand")
-    public String requestMedicines(@RequestParam("medicine_name") String[] demandList, Model model) {
-
-        for (String s: demandList)
-            System.out.println(s);
+    @PostMapping(value = "/demand")
+    public void requestMedicines(@ModelAttribute MedicineDemandContainer container) {
 
 
-        return "NO";
+
+//        for(String med: medicines){
+//            System.out.println("DEBUG >>>>>>>>>>>>>>>>>>>>>>>>>>> " + med);
+//        }
+//
+//        for(Integer e: demand){
+//            System.out.println("DEBUG >>>>>>>>>>>>>>>>>>>>>>>>>>> Counts: " + e);
+//        }
+
     }
 
     @GetMapping("login")

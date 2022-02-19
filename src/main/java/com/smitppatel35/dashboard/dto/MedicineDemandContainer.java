@@ -7,5 +7,6 @@ import java.util.List;
 @Data
 public class MedicineDemandContainer {
 
-    private List<MedicineDemand> medicineDemandList;
+    private List<MedicineDemand> medicines;
+
 }
