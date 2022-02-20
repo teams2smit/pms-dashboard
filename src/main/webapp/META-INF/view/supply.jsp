@@ -1,4 +1,3 @@
-<%@ page import="com.smitppatel35.dashboard.dto.MedicineDemand" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -29,35 +28,30 @@
 
 
     <div style="padding: 60px;">
-
-        <div class="row">
-            <div class="col">
+        <form id="subForm" action="/demand" method="post">
+            <div class="row">
+                <div class="col">
                     <select id="getList" class="form-select form-select-md" size="6" name="medicines" multiple>
                     </select>
-            </div>
+                </div>
 
-            <div class="col-md-auto">
-                <input type="button" id="callList" class="btn btn-dark mt-2" value=">>>"/>
-            </div>
+                <div class="col-md-auto">
+                    <input type="button" id="callList" class="btn btn-dark mt-2" value=">>>"/>
+                </div>
 
-
-            <div class="col-6">
-                <form id="subForm" action="/demand" method="get">
-
+                <div class="col-6">
                     <p><b>You have selected the following medicines</b></p>
-
                     <div id="selectedMedicines"></div>
-
-
-                </form>
-
+                </div>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <input type="submit" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"
-                   value="Submit"
-                   class="btn btn-lg btn-dark col-8">
-        </div>
+
+            <div class="row justify-content-center">
+                <input id="submit" type="button" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"
+                       value="Submit"
+                       class="btn btn-lg btn-dark col-8">
+            </div>
+
+        </form>
 
         <%--                <form id="myForm">--%>
         <%--                    <p><b>Please select the medicine you need</b></p>--%>
@@ -123,20 +117,13 @@
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-
-        });
-    </script>
-
-
-    <script type="text/javascript">
 
         $(document).ready(function () {
             <c:forEach items="${stockList}" var="r" varStatus="status">
-                $("#getList").append($('<option>', {
-                    value: <c:out value='${r.id}'/>,
-                    text: "<c:out value='${r.medicineName}'/>"
-                }));
+            $("#getList").append($('<option>', {
+                value: <c:out value='${r.id}'/>,
+                text: "<c:out value='${r.medicineName}'/>"
+            }));
             </c:forEach>
         });
 
@@ -147,11 +134,11 @@
                 var t = $("#getList option:selected");
 
                 var html = "";
-                for(var i=0;i<t.length;i++){
+                for (var i = 0; i < t.length; i++) {
 
                     html +=
-                        '<h5 class="form-label mt-2"> Demand Count for: <b>'+ t[i].text + '</b></h5>'
-                    +   '<input class="form-control" name="medicine'+ i +'" type="number" required />'
+                        '<h5 class="form-label mt-2"> Demand Count for: <b>' + t[i].text + '</b></h5>'
+                        + '<input class="form-control" name="' + t[i].text + '" type="number" required />'
                     ;
 
                 }
@@ -159,7 +146,36 @@
                     html
                 );
             });
-        })
+
+            $("#submit").click(function () {
+                var formInputs = $("#subForm input.form-control");
+                let data = new Array();
+
+                for (var i = 0; i < formInputs.length; i++) {
+                    var med = {
+                        "medicineName": formInputs[i].name,
+                        "demandCount": formInputs[i].valueAsNumber
+                    };
+
+                    data.push(med);
+                }
+
+                // console.log("Sending AJAX Request");
+
+                $.post({
+                    url: '/demand',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function (res) {
+
+                        console.log(<c:out value="${outOfStock}" />);
+                    }
+                });
+
+                // console.log(data);
+
+            });
+        });
 
     </script>
     <jsp:include page="footer.jsp"/>

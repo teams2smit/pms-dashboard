@@ -7,6 +7,6 @@ import java.util.List;
 @Data
 public class MedicineDemandContainer {
 
-    private List<MedicineDemand> medicines;
+    private List<Integer> medicines;
 
 }

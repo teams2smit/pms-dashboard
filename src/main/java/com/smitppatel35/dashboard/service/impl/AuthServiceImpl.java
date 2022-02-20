@@ -26,7 +26,7 @@ public class AuthServiceImpl implements AuthService {
             session.setAttribute("username", loginDto.getUsername());
             session.setAttribute("token", token);
 
-            session.setMaxInactiveInterval(2*60);
+            session.setMaxInactiveInterval(2 * 60 * 60);
         }catch (Exception e){
             throw new Exception("Something wrong happened");
         }

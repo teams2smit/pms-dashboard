@@ -10,6 +10,7 @@
                 <a href="/schedule" class="nav-item nav-link">Schedule</a>
                 <a href="/stock" class="nav-item nav-link">Stock</a>
                 <a href="/supply" class="nav-item nav-link">Supply</a>
+                <a href="/history" class="nav-item nav-link">History</a>
             </div>
             <div class="navbar-nav ms-auto">
                 <h5 class="nav-item nav-link"><b>${username}</b></h5>
