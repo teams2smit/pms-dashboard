@@ -60,67 +60,170 @@
 </head>
 <body>
 
-
-    
     <jsp:include page="navbar.jsp" />
         
-            <div class="row" style="margin: 15px;margin-top: 150px;margin-left: 50px;margin-right: 50px;">
-                <div class="col container1">
-                    <div class="card" style="margin-left: 18px;align-content: center;">
-                        <img src="https://img.icons8.com/nolan/64/scan-stock.png" style="max-width: 60px;" class="card-img-">
-                        <div class="card-body" style="margin-right: 1px;">
-                        <h5 class="card-title" style="text-align: center;">Stock Service</h5>
-                        <p class="card-text" style="text-align: center;">To get the details of all our medicine stock.</p>
-                        <center><a href="/stock" class="btn btn-outline-primary">Check Stock</a></center>
-                        </div>
-                    </div>
+    <%!
+    private Object List;
+%>
+
+<div class="container mt-3">
+
+    <h1 style="text-decoration: solid; margin-top: 50px; font-weight: bold ;font-size: 50px;">Pharmacy Demand Details</h1>
+    <br>
+
+
+    <div style="padding: 60px;">
+        <form id="subForm" action="/demand" method="post">
+            <div class="row">
+                <div class="col">
+                    <select id="getList" class="form-select form-select-md" size="6" name="medicines" multiple>
+                    </select>
                 </div>
-                <div class="col container1">
-                    <div class="card" style="margin-left: 18px;align-content: center;">
-                        <img src="https://img.icons8.com/nolan/64/medical-history.png" style="max-width: 60px;" class="card-img-top">
-                        <div class="card-body" style="margin-right: 1px;">
-                        <h5 class="card-title" style="text-align: center;">Schedule Service</h5>
-                        <p class="card-text" style="text-align: center;">Scheduling meeting with the doctors.</p>
-                        <center><a href="/schedule" class="btn btn-outline-primary">Generate Schedule</a></center>
-                        </div>
-                    </div>
+
+                <div class="col-md-auto">
+                    <input type="button" id="callList" class="btn btn-dark mt-2" value=">>>"/>
                 </div>
-                <div class="col container1">
-                    <div class="card" style="margin-left: 18px;align-content: center;">
-                        <img src="https://img.icons8.com/nolan/64/pill.png" style="max-width: 60px;" class="card-img-top" alt="...">
-                        <div class="card-body" style="margin-right: 1px;">
-                        <h5 class="card-title" style="text-align: center;">Supply Service</h5>
-                        <p class="card-text" style="text-align: center;">To supply the medicine stock from the pharmacy.</p>
-                        <center><a href="/supply" class="btn btn-outline-primary">Goto Supply</a></center>
-                        </div>
-                    </div>
-                </div>
-                <div class="col container1">
-                    <div class="card" style="margin-left: 30px;align-content: center;">
-                        <img src="https://img.icons8.com/nolan/64/heart-monitor.png" style="max-width: 60px;" class="card-img-top">
-                        <div class="card-body" style="margin-right: 1px;">
-                        <h5 class="card-title" style="text-align: center;">Opening Hours</h5>
-                        <p class="card-text" style="text-align: center;">
-                            <table class="table table-borderless">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Days</th>
-                                    <th scope="col">Timing</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>Mon-Sat</td>
-                                    <td>1PM to 2PM</td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                        </p>
-                        </div>
-                    </div>
+
+                <div class="col-6">
+                    <p><b>You have selected the following medicines</b></p>
+                    <div id="selectedMedicines"></div>
                 </div>
             </div>
+
+            <div class="row justify-content-center">
+                <input id="submit" type="button" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"
+                       value="Submit"
+                       class="btn btn-lg btn-dark col-8">
+            </div>
+
+        </form>
+
+        <%--                <form id="myForm">--%>
+        <%--                    <p><b>Please select the medicine you need</b></p>--%>
+        <%--                    <select id="medicine_name" name="medicine_name" multiple size="6" style="padding: 50px;">--%>
+        <%--                        <c:forEach items="${stockList}" var="s">--%>
+        <%--                            <option value="${s.medicineName}">${s.medicineName}</option>--%>
+        <%--                        </c:forEach>--%>
+        <%--                    </select>--%>
+        <%--                    <br>--%>
+        <%--                    <br>--%>
+
+        <%--                    <div class="col-2">--%>
+        <%--                        <br>--%>
+        <%--                        <br>--%>
+        <%--                        <br><br>--%>
+        <%--                        <p>--%>
+        <%--                            <button style="margin-top: 40px;" class="btn btn-dark"> >>></button>--%>
+        <%--                        </p>--%>
+        <%--                    </div>--%>
+
+
+        <%--                    <div class="col-6">--%>
+
+        <%--                        <%--%>
+        <%--                            String medicineNames[] = request.getParameterValues("medicine_name");--%>
+
+        <%--                            if (medicineNames != null) {--%>
+        <%--                        %>--%>
+        <%--                        <p><b>You have selected the following medicines</b></p>--%>
+        <%--                        <ul>--%>
+        <%--                            <%--%>
+        <%--                                for (int i = 0; i < medicineNames.length; i++) {--%>
+        <%--                            %>--%>
+        <%--                            <div class="mb-3">--%>
+        <%--                                <label for="${i}" class="form-label">Demand Count for: <%= medicineNames[i] %>--%>
+        <%--                                </label>--%>
+        <%--                                <input name="medicineName" value="<%= medicineNames[i]%>" type="text"--%>
+        <%--                                       class="form-control" hidden>--%>
+        <%--                                <input name="demandCount" type="text" class="form-control" id="${i}"--%>
+        <%--                                       placeholder="Enter Count">--%>
+        <%--                            </div>--%>
+        <%--                            </p>--%>
+        <%--                            <%--%>
+        <%--                                }--%>
+        <%--                            %>--%>
+        <%--                        </ul>--%>
+        <%--                        <%--%>
+        <%--                            }--%>
+        <%--                        %>--%>
+        <%--                    </div>--%>
+
+
+        <%--                    <div>--%>
+        <%--                        <center>--%>
+        <%--                            <button style="padding-left: 30px;padding-right: 30px;margin-top: 10px;" type="submit"--%>
+        <%--                                    class="btn btn-dark">Submit Demand--%>
+        <%--                            </button>--%>
+        <%--                        </center>--%>
+        <%--                    </div>--%>
+        <%--                </form>--%>
+
+
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            <c:forEach items="${stockList}" var="r" varStatus="status">
+            $("#getList").append($('<option>', {
+                value: <c:out value='${r.id}'/>,
+                text: "<c:out value='${r.medicineName}'/>"
+            }));
+            </c:forEach>
+        });
+
+        $(document).ready(function () {
+            $("#callList").click(function () {
+                $("#selectedMedicines").empty();
+
+                var t = $("#getList option:selected");
+
+                var html = "";
+                for (var i = 0; i < t.length; i++) {
+
+                    html +=
+                        '<h5 class="form-label mt-2"> Demand Count for: <b>' + t[i].text + '</b></h5>'
+                        + '<input class="form-control" name="' + t[i].text + '" type="number" required />'
+                    ;
+
+                }
+                $("#selectedMedicines").append(
+                    html
+                );
+            });
+
+            $("#submit").click(function () {
+                var formInputs = $("#subForm input.form-control");
+                let data = new Array();
+
+                for (var i = 0; i < formInputs.length; i++) {
+                    var med = {
+                        "medicineName": formInputs[i].name,
+                        "demandCount": formInputs[i].valueAsNumber
+                    };
+
+                    data.push(med);
+                }
+
+                // console.log("Sending AJAX Request");
+
+                $.post({
+                    url: '/demand',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function (res) {
+
+                        console.log(<c:out value="${outOfStock}" />);
+                    }
+                });
+
+                // console.log(data);
+
+            });
+        });
+
+    </script>
         
-      <jsp:include page="footer.jsp" />
+    <jsp:include page="footer.jsp" />
 </body>
 </html>

@@ -40,9 +40,9 @@ public class WebController {
 
     @GetMapping("/stock")
     public String stock(HttpSession session, Model model) {
-        if (session.getAttribute("token") == null) {
-            return "login";
-        }
+//        if (session.getAttribute("token") == null) {
+//            return "login";
+//        }
 
         model.addAttribute("stockList", stockService.getAllMedicinesList());
         return "stock";
