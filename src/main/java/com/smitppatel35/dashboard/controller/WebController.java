@@ -102,4 +102,8 @@ public class WebController {
 
         return "redirect:/login";
     }
+    @GetMapping("/dem")
+    public String l() {
+        return "dem";
+    }
 }
