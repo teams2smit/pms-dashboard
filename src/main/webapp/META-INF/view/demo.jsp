@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PMS Dashboard</title>
+  <title>Supply Record</title>
   
     <style>
         
@@ -61,112 +61,68 @@
 <body>
 
     <jsp:include page="navbar.jsp" />
-        
-    <div class="container mt-3">
+    
+    <%!
+    private Object List;
+%>
+<div>
+        <div class="container mt-3">
 
-        <h1  style="text-decoration: solid; margin-top: 50px; font-weight: bold ;font-size: 50px;">Medicine Stock Details </h1>
-        <br>
-    
-        <div class="container1" style="padding: 35px;">
-        <table class="table table-sm" style="height: 30px;">
-            
-                <tr class="bg-primary" style="line-height: 50px;font-size: 22px;color: #fff;">
-                    <th> Id</th>
-                    <th>Medicine Name</th>
-                    <th>Ailment</th>
-                    <th>Composition</th>
-                    <th>Stock Count</th>
-                    <th>Expiry Date</th>
-                </tr>
-            
-    
-                <c:forEach items="${stockList}" var="medicine">
-                    <div class="mb-3">
-                        <!--
-                        <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                            <td>${medicine.id}</td>
-                            <td>${medicine.medicineName}</td>
-                            <td>${medicine.targetAilments}</td>
-                            <td>${medicine.chemicalComposition}</td>
-                            <td>${medicine.numbersOfTabletsInStock}</td>
-                            <td>${medicine.dateOfExpiry}</td>
+            <h1 style="text-decoration: solid; margin-top: 50px; font-weight: bold ;font-size: 50px;">Demand And Supply Tracking</h1>
+            <br>
+
+            <div class="container1" style="padding: 35px;">
+                <table class="table table-sm" style="height: 30px;">
+                    <tr class="bg-primary" style="line-height: 50px;font-size: 22px;color: #fff;">
+                        <th>ID</th>
+                        <th>Pharmacy Name</th>
+                        <th>Medicine Name</th>
+                        <th>Demand Count</th>
+                        <th>Supply Count</th>
+                        <th>Date</th>
+                    </tr>
+
+                    <c:forEach items="${history}" var="m">
+                        <div class="mb-3">
                             <tr>
-                        </tr>-->
-                        
-                                
-                    </div>
-                </c:forEach>
-            <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                <td>Med1</td>
-                <td>Med1</td>
-                <td>Med1</td>
-                <td>Med1</td>
-                <td>Med1</td>
-                <td>Med1</td>
-                <tr>
+                                <td>${m.id}</td>
+                                <td>${m.pharmacyName}</td>
+                                <td>${m.medicineName}</td>
+                                <td>${m.demandCount}</td>
+                                <td>${m.supplyCount}</td>
+                                <td>${m.orderDate}</td>
+                            </tr>
+                        </div>
+                    </c:forEach>
+
                     <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                        <td>Med1</td>
-                        <td>Med1</td>
-                        <td>Med1</td>
-                        <td>Med1</td>
-                        <td>Med1</td>
-                        <td>Med1</td>
-                        <tr>
-                            <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                                <td>Med1</td>
-                                <td>Med1</td>
-                                <td>Med1</td>
-                                <td>Med1</td>
-                                <td>Med1</td>
-                                <td>Med1</td>
-                                <tr>
-                                    <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                                        <td>Med1</td>
-                                        <td>Med1</td>
-                                        <td>Med1</td>
-                                        <td>Med1</td>
-                                        <td>Med1</td>
-                                        <td>Med1</td>
-                                        <tr>
-                                            <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                                                <td>Med1</td>
-                                                <td>Med1</td>
-                                                <td>Med1</td>
-                                                <td>Med1</td>
-                                                <td>Med1</td>
-                                                <td>Med1</td>
-                                                <tr>
-                                                    <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                                                        <td>Med1</td>
-                                                        <td>Med1</td>
-                                                        <td>Med1</td>
-                                                        <td>Med1</td>
-                                                        <td>Med1</td>
-                                                        <td>Med1</td>
-                                                        <tr>
-    
-    
-    <%--        <%--%>
-    <%--            for(int i=0; i<25; i++)--%>
-    <%--            {--%>
-    <%--        %>--%>
-    <%--        <div class="mb-3">--%>
-    <%--            <tr>--%>
-    <%--                <td>test</td>--%>
-    <%--                <td>test</td>--%>
-    <%--                <td>test</td>--%>
-    <%--                <td>test</td>--%>
-    <%--                <td>test</td>--%>
-    <%--            </tr>--%>
-    <%--        </div>--%>
-    <%--        <%--%>
-    <%--            }--%>
-    <%--        %>--%>
-    
-        </table>
-    </div>
-    </div>
-        
+                        <td>med</td>
+                        <td>med</td>
+                        <td>med</td>
+                        <td>med</td>
+                        <td>med</td>
+                        <td>med</td>
+                    </tr >              
+                    <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
+                        <td>meddemo</td>
+                        <td>meddemo</td>
+                        <td>meddemo</td>
+                        <td>meddemo</td>
+                        <td>meddemo</td>
+                        <td>meddemo</td>
+                    </tr>`
+                    <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
+                        <td>med</td>
+                        <td>med</td>
+                        <td>med</td>
+                        <td>med</td>
+                        <td>med</td>
+                        <td>med</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>      
     <jsp:include page="footer.jsp" />
 </body>
 </html>
