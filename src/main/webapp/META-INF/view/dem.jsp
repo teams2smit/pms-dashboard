@@ -10,8 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PMS Dashboard</title>
   
-
-
     <style>
         
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
@@ -51,6 +49,11 @@
 
     </style>
 
+    <script >
+
+    </script>
+
+
 <%--    Bootstrap CSS--%>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -68,7 +71,7 @@
                         <div class="card-body" style="margin-right: 1px;">
                         <h5 class="card-title" style="text-align: center;">Stock Service</h5>
                         <p class="card-text" style="text-align: center;">To get the details of all our medicine stock.</p>
-                        <center><a href="/stock" class="btn btn-primary">Check Stock</a></center>
+                        <center><a href="/stock" class="btn btn-outline-primary">Check Stock</a></center>
                         </div>
                     </div>
                 </div>
@@ -78,7 +81,7 @@
                         <div class="card-body" style="margin-right: 1px;">
                         <h5 class="card-title" style="text-align: center;">Schedule Service</h5>
                         <p class="card-text" style="text-align: center;">Scheduling meeting with the doctors.</p>
-                        <center><a href="/schedule" class="btn btn-primary">Generate Schedule</a></center>
+                        <center><a href="/schedule" class="btn btn-outline-primary">Generate Schedule</a></center>
                         </div>
                     </div>
                 </div>
@@ -88,7 +91,7 @@
                         <div class="card-body" style="margin-right: 1px;">
                         <h5 class="card-title" style="text-align: center;">Supply Service</h5>
                         <p class="card-text" style="text-align: center;">To supply the medicine stock from the pharmacy.</p>
-                        <center><a href="/supply" class="btn btn-primary">Goto Supply</a></center>
+                        <center><a href="/supply" class="btn btn-outline-primary">Goto Supply</a></center>
                         </div>
                     </div>
                 </div>
