@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PMS Dashboard</title>
+  <title>Schedule Management</title>
   
     <style>
         
@@ -64,7 +64,7 @@
         
     <div class="container mt-3">
 
-        <h1 style="text-decoration: solid; margin-top: 50px; font-weight: bold ;font-size: 50px;"">Representative Schedule</h1>
+        <h1 style="text-decoration: solid; margin-top: 50px; font-weight: bold ;font-size: 50px;">Representative Schedule</h1>
         <br>
         <div class="container1" style="padding: 35px;">
             <table class="table table-sm" style="height: 30px;">

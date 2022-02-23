@@ -48,7 +48,6 @@
             overflow: hidden;
         }
        
-
     </style>
 
 <%--    Bootstrap CSS--%>
@@ -57,8 +56,6 @@
 </head>
 <body>
 
-
-    
     <jsp:include page="navbar.jsp" />
         
             <div class="row" style="margin: 15px;margin-top: 150px;margin-left: 50px;margin-right: 50px;">
@@ -68,7 +65,7 @@
                         <div class="card-body" style="margin-right: 1px;">
                         <h5 class="card-title" style="text-align: center;">Stock Service</h5>
                         <p class="card-text" style="text-align: center;">To get the details of all our medicine stock.</p>
-                        <center><a href="/stock" class="btn btn-primary">Check Stock</a></center>
+                        <center><a href="/stock" class="btn btn-outline-primary">Check Stock</a></center>
                         </div>
                     </div>
                 </div>
@@ -78,7 +75,8 @@
                         <div class="card-body" style="margin-right: 1px;">
                         <h5 class="card-title" style="text-align: center;">Schedule Service</h5>
                         <p class="card-text" style="text-align: center;">Scheduling meeting with the doctors.</p>
-                        <center><a href="/schedule" class="btn btn-primary">Generate Schedule</a></center>
+                        <br>
+                        <center><a href="/schedule" class="btn btn-outline-primary">Generate Schedule</a></center>
                         </div>
                     </div>
                 </div>
@@ -88,7 +86,7 @@
                         <div class="card-body" style="margin-right: 1px;">
                         <h5 class="card-title" style="text-align: center;">Supply Service</h5>
                         <p class="card-text" style="text-align: center;">To supply the medicine stock from the pharmacy.</p>
-                        <center><a href="/supply" class="btn btn-primary">Goto Supply</a></center>
+                        <center><a href="/supply" class="btn btn-outline-primary">Goto Supply</a></center>
                         </div>
                     </div>
                 </div>
@@ -108,7 +106,7 @@
                                 <tbody>
                                   <tr>
                                     <td>Mon-Sat</td>
-                                    <td>1PM to 2PM</td>
+                                    <td>1PM to 3PM</td>
                                   </tr>
                                 </tbody>
                               </table>
