@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@FeignClient(url = "${api-gateway-endpoint}" , name = "schedule-service")
+@FeignClient(url = "${api-gateway-endpoint}/schedule" , name = "schedule-service")
 public interface ScheduleClient {
 
     @GetMapping(value = "/RepSchedule/{scheduleStartDate}")

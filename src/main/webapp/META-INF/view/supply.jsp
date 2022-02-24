@@ -14,107 +14,87 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            background-image: url("images/dashimg.jpg");
+            background-size: cover;
+        }
+
+        .card {
+            align-items: center;
+            align-content: center;
+            margin: 40px;
+        }
+
+        .container1 {
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 14px 28px rgba(25, 0, 255, 0.25),
+            0 10px 10px rgba(25, 0, 255, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
-<%!
-    private Object List;
-%>
 <jsp:include page="navbar.jsp"/>
 <div class="container mt-3">
 
-    <h1 style="text-decoration: solid;font-weight: bold;">Pharmacy Demand Details</h1>
+    <h1 style="text-decoration: solid; margin-top: 50px; font-weight: bold ;font-size: 50px;margin-left: 28px;">Pharmacy
+        Demand Details</h1>
     <br>
 
+    <div class="container">
+        <div class="container1">
+            <div style="padding: 60px;">
+                <form id="subForm" action="/demand" method="post">
+                    <div class="row">
+                        <div class="col-4" style="margin-bottom: 25px;">
+                            <p style="font-weight: normal ;font-size: 20px;margin-right: 18px;  text-align: center;"><b>Please
+                                select the medicine you need</b></p>
+                            <select id="getList" class="form-select" size="10" name="medicines" multiple
+                                    style="margin-top: 45px;">
+                            </select>
+                        </div>
 
-    <div style="padding: 60px;">
-        <form id="subForm" action="/demand" method="post">
-            <div class="row">
-                <div class="col">
-                    <select id="getList" class="form-select form-select-md" size="6" name="medicines" multiple>
-                    </select>
-                </div>
+                        <div class="col-md-auto">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <input id="callList" style="margin-top: 65px;border-radius: 60%;padding: 18px; width: 60px; color: rgb(0, 60, 255);
+                                text-align: center;cursor: pointer; font-weight: bold;"
+                                   class="btn btn-outline-primary" value=">" readonly>
+                        </div>
 
-                <div class="col-md-auto">
-                    <input type="button" id="callList" class="btn btn-dark mt-2" value=">>>"/>
-                </div>
+                        <div class="col-6">
+                            <p style="font-weight: normal ;font-size: 20px;margin-left: 20px;  text-align: center;margin-bottom: 25px;">
+                                <b>You have selected the following medicines</b></p>
+                            <div id="selectedMedicines"></div>
 
-                <div class="col-6">
-                    <p><b>You have selected the following medicines</b></p>
-                    <div id="selectedMedicines"></div>
-                </div>
+                            <center>
+                                <input id="submit" type="button"
+                                       style="padding-left: 30px;padding-right: 30px;margin-top: 30px;height: 45px;"
+                                       value="Submit"
+                                       class="btn btn-outline-primary">
+                            </center>
+                        </div>
+                    </div>
+                </form>
             </div>
 
-            <div class="row justify-content-center">
-                <input id="submit" type="button" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"
-                       value="Submit"
-                       class="btn btn-lg btn-dark col-8">
-            </div>
-
-        </form>
-
-        <%--                <form id="myForm">--%>
-        <%--                    <p><b>Please select the medicine you need</b></p>--%>
-        <%--                    <select id="medicine_name" name="medicine_name" multiple size="6" style="padding: 50px;">--%>
-        <%--                        <c:forEach items="${stockList}" var="s">--%>
-        <%--                            <option value="${s.medicineName}">${s.medicineName}</option>--%>
-        <%--                        </c:forEach>--%>
-        <%--                    </select>--%>
-        <%--                    <br>--%>
-        <%--                    <br>--%>
-
-        <%--                    <div class="col-2">--%>
-        <%--                        <br>--%>
-        <%--                        <br>--%>
-        <%--                        <br><br>--%>
-        <%--                        <p>--%>
-        <%--                            <button style="margin-top: 40px;" class="btn btn-dark"> >>></button>--%>
-        <%--                        </p>--%>
-        <%--                    </div>--%>
-
-
-        <%--                    <div class="col-6">--%>
-
-        <%--                        <%--%>
-        <%--                            String medicineNames[] = request.getParameterValues("medicine_name");--%>
-
-        <%--                            if (medicineNames != null) {--%>
-        <%--                        %>--%>
-        <%--                        <p><b>You have selected the following medicines</b></p>--%>
-        <%--                        <ul>--%>
-        <%--                            <%--%>
-        <%--                                for (int i = 0; i < medicineNames.length; i++) {--%>
-        <%--                            %>--%>
-        <%--                            <div class="mb-3">--%>
-        <%--                                <label for="${i}" class="form-label">Demand Count for: <%= medicineNames[i] %>--%>
-        <%--                                </label>--%>
-        <%--                                <input name="medicineName" value="<%= medicineNames[i]%>" type="text"--%>
-        <%--                                       class="form-control" hidden>--%>
-        <%--                                <input name="demandCount" type="text" class="form-control" id="${i}"--%>
-        <%--                                       placeholder="Enter Count">--%>
-        <%--                            </div>--%>
-        <%--                            </p>--%>
-        <%--                            <%--%>
-        <%--                                }--%>
-        <%--                            %>--%>
-        <%--                        </ul>--%>
-        <%--                        <%--%>
-        <%--                            }--%>
-        <%--                        %>--%>
-        <%--                    </div>--%>
-
-
-        <%--                    <div>--%>
-        <%--                        <center>--%>
-        <%--                            <button style="padding-left: 30px;padding-right: 30px;margin-top: 10px;" type="submit"--%>
-        <%--                                    class="btn btn-dark">Submit Demand--%>
-        <%--                            </button>--%>
-        <%--                        </center>--%>
-        <%--                    </div>--%>
-        <%--                </form>--%>
-
-
+        </div>
     </div>
+
 
     <script type="text/javascript">
 

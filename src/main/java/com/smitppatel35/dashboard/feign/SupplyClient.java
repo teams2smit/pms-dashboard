@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.List;
 
-@FeignClient(url = "${api-gateway-endpoint}", name = "supply-service")
+@FeignClient(url = "${api-gateway-endpoint}/supply", name = "supply-service")
 public interface SupplyClient {
 
     @PostMapping(value = "/PharmacySupply")

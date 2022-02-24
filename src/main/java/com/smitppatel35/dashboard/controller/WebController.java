@@ -101,31 +101,4 @@ public class WebController {
         session.removeAttribute("username");
         return "redirect:/login";
     }
-
-    @GetMapping("/dem")
-    public String l() {
-        return "login";
-    }
-    @GetMapping("/demo")
-    public String l1() {
-        return "stock";
-    }
-    @GetMapping("/dem1")
-    public String l2() {
-        return "schedule";
-    }
-    @GetMapping("/dem2")
-    public String l3() {
-        return "history";
-    }
-    @GetMapping("/dem3")
-    public String l4() {
-        return "dem";
-    }
-    @GetMapping("/dem4")
-    public String l5() {
-        return "home";
-    }
-
-
 }

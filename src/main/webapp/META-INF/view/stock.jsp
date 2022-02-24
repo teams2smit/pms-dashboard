@@ -82,7 +82,7 @@
     
                 <c:forEach items="${stockList}" var="medicine">
                     <div class="mb-3">
-                        <!--
+
                         <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
                             <td>${medicine.id}</td>
                             <td>${medicine.medicineName}</td>
@@ -91,78 +91,9 @@
                             <td>${medicine.numbersOfTabletsInStock}</td>
                             <td>${medicine.dateOfExpiry}</td>
                             <tr>
-                        </tr>-->
-                        
-                                
+                        </tr>
                     </div>
                 </c:forEach>
-            <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                <td>Med1</td>
-                <td>Med1</td>
-                <td>Med1</td>
-                <td>Med1</td>
-                <td>Med1</td>
-                <td>Med1</td>
-                <tr>
-                    <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                        <td>Med1</td>
-                        <td>Med1</td>
-                        <td>Med1</td>
-                        <td>Med1</td>
-                        <td>Med1</td>
-                        <td>Med1</td>
-                        <tr>
-                            <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                                <td>Med1</td>
-                                <td>Med1</td>
-                                <td>Med1</td>
-                                <td>Med1</td>
-                                <td>Med1</td>
-                                <td>Med1</td>
-                                <tr>
-                                    <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                                        <td>Med1</td>
-                                        <td>Med1</td>
-                                        <td>Med1</td>
-                                        <td>Med1</td>
-                                        <td>Med1</td>
-                                        <td>Med1</td>
-                                        <tr>
-                                            <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                                                <td>Med1</td>
-                                                <td>Med1</td>
-                                                <td>Med1</td>
-                                                <td>Med1</td>
-                                                <td>Med1</td>
-                                                <td>Med1</td>
-                                                <tr>
-                                                    <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                                                        <td>Med1</td>
-                                                        <td>Med1</td>
-                                                        <td>Med1</td>
-                                                        <td>Med1</td>
-                                                        <td>Med1</td>
-                                                        <td>Med1</td>
-                                                        <tr>
-    
-    
-    <%--        <%--%>
-    <%--            for(int i=0; i<25; i++)--%>
-    <%--            {--%>
-    <%--        %>--%>
-    <%--        <div class="mb-3">--%>
-    <%--            <tr>--%>
-    <%--                <td>test</td>--%>
-    <%--                <td>test</td>--%>
-    <%--                <td>test</td>--%>
-    <%--                <td>test</td>--%>
-    <%--                <td>test</td>--%>
-    <%--            </tr>--%>
-    <%--        </div>--%>
-    <%--        <%--%>
-    <%--            }--%>
-    <%--        %>--%>
-    
         </table>
     </div>
     </div>
