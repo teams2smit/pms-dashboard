@@ -1,18 +1,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 
     <style>
-
-        
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
         * {
@@ -106,8 +106,8 @@
         .container {
             background-color: #fff;
             border-radius: 20px;
-            box-shadow: 0 14px 28px rgba(25, 0, 255, 0.25), 
-                    0 10px 10px rgba(25, 0, 255, 0.25);
+            box-shadow: 0 14px 28px rgba(25, 0, 255, 0.25),
+            0 10px 10px rgba(25, 0, 255, 0.25);
             position: relative;
             overflow: hidden;
             width: 768px;
@@ -152,7 +152,7 @@
                 opacity: 0;
                 z-index: 1;
             }
-            
+
             50%, 100% {
                 opacity: 1;
                 z-index: 5;
@@ -170,7 +170,7 @@
             z-index: 100;
         }
 
-        .container.right-panel-active .overlay-container{
+        .container.right-panel-active .overlay-container {
             transform: translateX(-100%);
         }
 
@@ -216,7 +216,7 @@
             transform: translateX(0);
         }
 
-        .btnsignin{
+        .btnsignin {
             background-color: #1000ec;
             border-color: #1000ec;
         }
@@ -228,7 +228,7 @@
 
         .container.right-panel-active .overlay-right {
             transform: translateX(20%);
-        
+
         }
 
         .social-container {
@@ -272,107 +272,79 @@
         }
 
     </style>
-
-    <script>
-
-        const signUpButton = document.getElementById('signUp');
-        const signInButton = document.getElementById('signIn');
-        const container = document.getElementById('container');
-
-        signUpButton.addEventListener('click', () => {
-            container.classList.add("right-panel-active");
-        });
-
-        signInButton.addEventListener('click', () => {
-            container.classList.remove("right-panel-active");
-        });
-
-    </script>
-
-
-
-
 </head>
 <body>
-  
-  <h1 style="font-weight: bold;padding: 35px;font-size: 50px;">Pharmacy Management System</h1>
-  
+
+<h1 style="font-weight: bold;padding: 35px;font-size: 50px;">Pharmacy Management System</h1>
+
 <div class="container" id="container">
-	<div class="form-container sign-up-container">
-		
-        <!---->
-        <form action="#">
-			<span>or use your email for registration</span>
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<button>Sign Up</button>
-		</form>
-	</div>
-	<div class="form-container sign-in-container">
-		<!--
-        <form action="#">
-			<h1>Sign in</h1>
-            <br>
-			<span>or use your account</span>
-
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-
-			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
-		</form>-->
-
+    <div class="form-container sign-in-container">
         <main class="form-signin">
             <br><br><br>
-            <form:form action="/auth/login" method="post" modelAttribute="login">
-        
+            <form id="loginForm">
+
                 <h1>Sign in</h1>
                 <br>
                 <span>Please fill login details</span>
                 <br>
-        
+
                 <div class="form-floating">
                     <label for="username" style="text-align: left;">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
-                    
-                    
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username"
+                           required>
                 </div>
                 <br>
                 <div class="form-floating">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                    
-                    
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                           required>
                 </div>
                 <br>
-        
-                <button class="btnsignin" type="submit">Sign in</button>
-            </form:form>
+
+                <button id="btn_login" class="btnsignin" type="button">Sign in</button>
+            </form>
         </main>
 
-
-
-	</div>
-	<div class="overlay-container">
-		<div class="overlay">
-			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" id="signIn">Sign In</button>
-			</div>
-			<div class="overlay-panel overlay-right">
-        <div>
-
-
-            <img src="/images/login.jpg" style="max-width: 100%;">
-          
-
-          
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <div>
+                    <img src="/images/login.jpg" style="max-width: 100%;">
+                </div>
+            </div>
         </div>
-			</div>
-		</div>
-	</div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btn_login").click(function () {
+                var user = {
+                    username: $("#loginForm input.form-control")[0].value,
+                    password: $("#loginForm input.form-control")[1].value
+                };
+
+                $.post({
+                    url: "/auth/login",
+                    data: JSON.stringify(user),
+                    contentType: 'application/json',
+                    statusCode: {
+                        200: function (res) {
+                            window.location.href = './'
+                        },
+                        400: function (res) {
+                            alert("Invalid Credentials");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </div>
 
 </body>

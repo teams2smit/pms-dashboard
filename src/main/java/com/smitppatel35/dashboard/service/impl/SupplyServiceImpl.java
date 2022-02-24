@@ -6,6 +6,7 @@ import com.smitppatel35.dashboard.entity.PharmacyMedicineSupply;
 import com.smitppatel35.dashboard.feign.SupplyClient;
 import com.smitppatel35.dashboard.repository.DemandSupplyRepository;
 import com.smitppatel35.dashboard.service.SupplyService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 @Service
 public class SupplyServiceImpl implements SupplyService {
 
@@ -25,9 +27,14 @@ public class SupplyServiceImpl implements SupplyService {
 
     @Override
     public void sendDemandRequest(HttpSession session, List<MedicineDemand> demandList) {
+
+        log.info("[SupplyServiceImpl] sendDemandRequest() invoked");
+
         String token = (String) session.getAttribute("token");
 
+        log.debug("Requesting to supply-service");
         List<PharmacyMedicineSupplyDTO> result = supplyClient.pharmacySupply("Bearer " + token, demandList);
+        log.debug("Requesting to supply-service");
 
         for (PharmacyMedicineSupplyDTO d : result) {
 
@@ -44,22 +51,19 @@ public class SupplyServiceImpl implements SupplyService {
             p.setOrderDate(new Date());
             p.setRepName((String) session.getAttribute("username"));
 
+            log.debug("Saving supply demand trade-offs to db");
             demandSupplyRepository.save(p);
         }
-
-//        HashMap<String, Object> resultMap = new HashMap<>();
-
-//        resultMap.put("result", demandSupplyRepository.getAllByRepName((String) session.getAttribute("username")));
-//        resultMap.put("outOfStock", demandList.size() - result.size());
-
-//        return resultMap;
-
     }
 
     @Override
     public List<PharmacyMedicineSupply> getDemandSupplyHistory(HttpSession session) {
+        log.info("[SupplyServiceImpl] getDemandSupplyHistory() invoked");
         String username = (String) session.getAttribute("username");
+
+        log.debug("Requesting to supply-service");
         List<PharmacyMedicineSupply> medicineSupplies = demandSupplyRepository.getAllByRepName((String) username);
+        log.debug("Requesting to supply-service");
 
         medicineSupplies.sort(new Comparator<PharmacyMedicineSupply>() {
             @Override
@@ -74,6 +78,7 @@ public class SupplyServiceImpl implements SupplyService {
             }
         });
 
+        log.debug("Returning supply list to controller");
         return medicineSupplies;
     }
 

@@ -13,6 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>pms-ui-spring-boot</name>
     <description>Demo project for Spring Boot</description>
+    <packaging>war</packaging>
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>2021.0.0</spring-cloud.version>
@@ -90,6 +91,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>pms-ui-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

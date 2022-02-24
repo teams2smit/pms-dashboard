@@ -75,7 +75,6 @@
                 <table class="table table-sm" style="height: 30px;">
                     <tr class="bg-primary" style="line-height: 50px;font-size: 22px;color: #fff;">
                         <th>ID</th>
-                        <th>Pharmacy Name</th>
                         <th>Medicine Name</th>
                         <th>Demand Count</th>
                         <th>Supply Count</th>
@@ -86,7 +85,6 @@
                         <div class="mb-3">
                             <tr>
                                 <td>${m.id}</td>
-                                <td>${m.pharmacyName}</td>
                                 <td>${m.medicineName}</td>
                                 <td>${m.demandCount}</td>
                                 <td>${m.supplyCount}</td>
@@ -94,32 +92,6 @@
                             </tr>
                         </div>
                     </c:forEach>
-
-                    <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                        <td>med</td>
-                        <td>med</td>
-                        <td>med</td>
-                        <td>med</td>
-                        <td>med</td>
-                        <td>med</td>
-                    </tr >              
-                    <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                        <td>meddemo</td>
-                        <td>meddemo</td>
-                        <td>meddemo</td>
-                        <td>meddemo</td>
-                        <td>meddemo</td>
-                        <td>meddemo</td>
-                    </tr>`
-                    <tr class="table-light" style="opacity: 0.68;line-height: 36px; font-weight: bold;">
-                        <td>med</td>
-                        <td>med</td>
-                        <td>med</td>
-                        <td>med</td>
-                        <td>med</td>
-                        <td>med</td>
-                    </tr>
-
                 </table>
             </div>
         </div>      

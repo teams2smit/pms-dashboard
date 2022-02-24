@@ -140,20 +140,17 @@
                     data.push(med);
                 }
 
-                // console.log("Sending AJAX Request");
-
                 $.post({
                     url: '/demand',
                     contentType: 'application/json',
                     data: JSON.stringify(data),
                     success: function (res) {
+                        alert("Demand submitted successfully");
 
-                        console.log(<c:out value="${outOfStock}" />);
+                        window.location.reload();
+
                     }
                 });
-
-                // console.log(data);
-
             });
         });
 

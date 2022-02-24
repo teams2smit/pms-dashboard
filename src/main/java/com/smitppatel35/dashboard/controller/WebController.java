@@ -1,11 +1,12 @@
 package com.smitppatel35.dashboard.controller;
 
-import com.smitppatel35.dashboard.dto.LoginDto;
 import com.smitppatel35.dashboard.dto.MedicineDemand;
 import com.smitppatel35.dashboard.service.ScheduleService;
 import com.smitppatel35.dashboard.service.StockService;
 import com.smitppatel35.dashboard.service.SupplyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,11 +71,11 @@ public class WebController {
     }
 
     @PostMapping(value = "/demand")
-    public String requestMedicines(HttpSession session, @RequestBody List<MedicineDemand> demandList, Model model) {
+    public ResponseEntity<String> requestMedicines(HttpSession session, @RequestBody List<MedicineDemand> demandList, Model model) {
 
         supplyService.sendDemandRequest(session, demandList);
 
-        return "redirect:/history";
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
     @GetMapping("/history")
