@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>404 HTML Tempalte by Colorlib</title>
+    <title>Error Page Not Found</title>
 
     <link type="text/css" rel="stylesheet" href="css/style.css">
 
@@ -47,7 +47,7 @@
         }
 
         .notfound .notfound-404 {
-            height: 280px;
+            height: 200px;
             position: relative;
             z-index: -1;
         }
@@ -107,10 +107,12 @@
         @media only screen and (max-width: 767px) {
             .notfound .notfound-404 {
                 height: 142px;
+                margin: 40px;
             }
 
             .notfound .notfound-404 h1 {
                 font-size: 112px;
+                
             }
         }
 

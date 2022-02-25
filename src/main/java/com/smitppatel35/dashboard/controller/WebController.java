@@ -102,4 +102,9 @@ public class WebController {
         session.removeAttribute("username");
         return "redirect:/login";
     }
+
+    @GetMapping("/g")
+    public String s(){
+        return "error";
+    }
 }
