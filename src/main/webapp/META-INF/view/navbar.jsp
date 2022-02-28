@@ -7,7 +7,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav" style="font-weight: bold;font-size: 16px;">
-                <a href="#" class="nav-item nav-link active">Home</a>
+                <a href="/" class="nav-item nav-link active">Home</a>
                 <a href="/schedule" class="nav-item nav-link">Schedule</a>
                 <a href="/stock" class="nav-item nav-link">Stock</a>
                 <a href="/supply" class="nav-item nav-link">Supply</a>

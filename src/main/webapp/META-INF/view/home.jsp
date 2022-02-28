@@ -75,7 +75,6 @@
                         <div class="card-body" style="margin-right: 1px;">
                         <h5 class="card-title" style="text-align: center;">Schedule Service</h5>
                         <p class="card-text" style="text-align: center;">Scheduling meeting with the doctors.</p>
-                        <br>
                         <center><a href="/schedule" class="btn btn-outline-primary">Generate Schedule</a></center>
                         </div>
                     </div>
